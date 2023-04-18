@@ -1,6 +1,8 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import random
+
 
 def normal(x,mu,sigma):
     return 1/np.sqrt(2*np.pi*sigma**2)*np.exp(-((x-mu)/sigma)**2)
@@ -23,7 +25,6 @@ for i in range(data[:,4].shape[0]):
     if(data[:,4][i]>=500):
         data[:,4][i]=data[:,4][i]/30
 moneyspent=data[:,4]
-print(np.mean(sleeptime),np.var(sleeptime))
 
 
 #Histograms
@@ -83,4 +84,29 @@ for i in range(1,5):
     for i, patch in enumerate(box['boxes']):
         patch.set_facecolor(colors[i])
     plt.grid()
+    plt.show()
+
+
+#CLT
+pairs = []
+mu=[]
+ks=[2,4,10,20,30]
+for k in ks:
+    for i in range(1,100):
+        sleeptime1=list(sleeptime)
+        for p in range(len(sleeptime) // k):
+            sum=0
+            for j in range(k):
+                sum+=sleeptime1.pop(random.randrange(len(sleeptime1)))
+            mu.append(sum/k)
+    # print(len(pairs))
+    mu.sort()
+    unique_mu=list(set(mu))
+    # print(unique_mu)
+    freq=[]
+    for i in range(len(unique_mu)):
+        freq.append(mu.count(unique_mu[i])/len(mu))
+    plt.scatter(unique_mu,freq,label=f'n={k}')
+    plt.grid()
+    plt.legend()
     plt.show()
