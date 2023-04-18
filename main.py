@@ -2,7 +2,16 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import random
+import imageio
+import os
 
+def gif(path,name):
+    files=os.listdir(f'{path}')
+    image_path=[os.path.join(f'{path}',file) for file in files]
+    images=[]
+    for img in image_path:
+        images.append(imageio.imread(img))
+    imageio.mimwrite(f'CLT/{name}.gif',images,fps=5)
 
 def normal(x,mu,sigma):
     return 1/np.sqrt(2*np.pi*sigma**2)*np.exp(-((x-mu)/sigma)**2)
@@ -90,9 +99,9 @@ for i in range(1,5):
 #CLT
 pairs = []
 mu=[]
-ks=[2,4,10,20,30]
+ks=range(2,50)
 for k in ks:
-    for i in range(1,100):
+    for i in range(1,200):
         sleeptime1=list(sleeptime)
         for p in range(len(sleeptime) // k):
             sum=0
@@ -106,7 +115,11 @@ for k in ks:
     freq=[]
     for i in range(len(unique_mu)):
         freq.append(mu.count(unique_mu[i])/len(mu))
-    plt.scatter(unique_mu,freq,label=f'n={k}')
-    plt.grid()
-    plt.legend()
-    plt.show()
+    fig1, ax1= plt.subplots()
+    ax1.grid()
+    plt.xlim(right=13)
+    plt.ylim(top=0.2)
+    ax1.scatter(unique_mu,freq,label=f'n={k}')
+    ax1.legend()
+    plt.savefig(f'CLT\{k:003}',dpi=100,facecolor='white')
+gif('CLT','CLT')
