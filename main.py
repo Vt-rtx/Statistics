@@ -23,6 +23,7 @@ for i in range(data[:,4].shape[0]):
     if(data[:,4][i]>=500):
         data[:,4][i]=data[:,4][i]/30
 moneyspent=data[:,4]
+print(np.mean(sleeptime),np.var(sleeptime))
 
 
 #Histograms
@@ -62,14 +63,24 @@ for i in range(data.shape[0]):
         veg.append(data[i])
     else:
         Egg.append(data[i])
-
+columns=['Physical activity per week in hours','Sleep time in hours per day','Number of times a student eats outside per month','Money spent on food per day']
 veg=np.array(veg) 
 Nonveg=np.array(Nonveg) 
 Egg=np.array(Egg)  
-color=['red','green','brown']
+colors=['green','red','brown']
 for i in range(1,5):
     temp=[veg[:,i],Nonveg[:,i],Egg[:,i]]
-    plt.boxplot(temp)
-    plt.xticks([1,2,3],["Veg","Nonveg","Egg"])
+    # Create the boxplot
+    fig, ax = plt.subplots()
+    box = ax.boxplot(temp, patch_artist=True, vert=True)
+    # Set the xticks and labels
+    xticks = [1, 2, 3]
+    xticklabels = ['Veg', 'Non-veg', 'Veg+Egg']
+    ax.set_xticks(xticks)
+    ax.set_xticklabels(xticklabels)
+    ax.set_ylabel(columns[i-1])
+    # Set the facecolor of each box
+    for i, patch in enumerate(box['boxes']):
+        patch.set_facecolor(colors[i])
     plt.grid()
     plt.show()
