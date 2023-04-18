@@ -99,7 +99,7 @@ for i in range(1,5):
 #CLT
 pairs = []
 mu=[]
-ks=range(2,50)
+ks=range(2,40)
 for k in ks:
     for i in range(1,200):
         sleeptime1=list(sleeptime)
