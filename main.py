@@ -17,7 +17,7 @@ def normal(x,mu,sigma):
     return 1/np.sqrt(2*np.pi*sigma**2)*np.exp(-((x-mu)/sigma)**2)
 
 df = pd.read_excel(r'Effects of food habits on daily life (Responses).xlsx')
-df=df.drop(['Timestamp','Did the keyword "18+" affect your decision in choosing to fill this form?'], axis=1)
+df=df.drop(['Timestamp'], axis=1)
 df=df[df['Physical activity']<=50]
 df=df[df['Sleep time']<=12]
 df=df[df['Eating outside']<=90]
@@ -26,15 +26,61 @@ df=df[df['money on food per day']<=1000]
 data=df.to_numpy()
 # print(data)
 
-physicalactivity=data[:,1]
+physicalactivity=np.sort(data[:,1])
+#Central tendencies for physical activity 
+print('Central tendencies for physical activity')
+count=physicalactivity.shape[0]
+max=np.max(physicalactivity)
+std=np.sqrt(np.var(physicalactivity))
+min=np.min(physicalactivity)
+q1=physicalactivity[int(count/4)]
+q2=physicalactivity[int(count/2)]
+q3=physicalactivity[int(3*count/4)]
+mean=np.mean(physicalactivity)
+print(f' count = {count}\n mean = {mean}\n std = {std}\n max = {max}\n min = {min}\n 25% = {q1}\n 50% = {q2}\n 75% = {q3}')
 
-sleeptime=data[:,2]
-eatoutfrequency=data[:,3]
+sleeptime=np.sort(data[:,2])
+#Central tendencies for sleep time
+print('Central tendencies for sleep time')
+count=sleeptime.shape[0]
+max=np.max(sleeptime)
+std=np.sqrt(np.var(sleeptime))
+min=np.min(sleeptime)
+q1=sleeptime[int(count/4)]
+q2=sleeptime[int(count/2)]
+q3=sleeptime[int(3*count/4)]
+mean=np.mean(sleeptime)
+print(f' count = {count}\n mean = {mean}\n std = {std}\n max = {max}\n min = {min}\n 25% = {q1}\n 50% = {q2}\n 75% = {q3}')
+
+eatoutfrequency=np.sort(data[:,3])
+#Central tendencies for number of time eat out in a month
+print('Central tendencies for number of times eat out in a month')
+count=eatoutfrequency.shape[0]
+max=np.max(eatoutfrequency)
+std=np.sqrt(np.var(eatoutfrequency))
+min=np.min(eatoutfrequency)
+q1=eatoutfrequency[int(count/4)]
+q2=eatoutfrequency[int(count/2)]
+q3=eatoutfrequency[int(3*count/4)]
+mean=np.mean(eatoutfrequency)
+print(f' count = {count}\n mean = {mean}\n std = {std}\n max = {max}\n min = {min}\n 25% = {q1}\n 50% = {q2}\n 75% = {q3}')
+
+
 for i in range(data[:,4].shape[0]):
     if(data[:,4][i]>=500):
         data[:,4][i]=data[:,4][i]/30
-moneyspent=data[:,4]
-
+moneyspent=np.sort(data[:,4])
+#Central tendencies for money spent everyday
+print('Central tendencies for money spent everyday')
+count=moneyspent.shape[0]
+max=np.max(moneyspent)
+std=np.sqrt(np.var(moneyspent))
+min=np.min(moneyspent)
+q1=moneyspent[int(count/4)]
+q2=moneyspent[int(count/2)]
+q3=moneyspent[int(3*count/4)]
+mean=np.mean(moneyspent)
+print(f' count = {count}\n mean = {mean}\n std = {std}\n max = {max}\n min = {min}\n 25% = {q1}\n 50% = {q2}\n 75% = {q3}')
 
 #Histograms
 counts,edges,bars=plt.hist(physicalactivity,bins=range(0,51,2))
