@@ -11,12 +11,12 @@ def gif(path,name):
     images=[]
     for img in image_path:
         images.append(imageio.imread(img))
-    imageio.mimwrite(f'CLT/{name}.gif',images,fps=5)
+    imageio.mimwrite(f'CLT/{name}.gif',images,fps=10)
 
 def normal(x,mu,sigma):
     return 1/np.sqrt(2*np.pi*sigma**2)*np.exp(-((x-mu)/sigma)**2)
 
-df = pd.read_excel(r'Effects of food habits on daily life (Responses).xlsx')
+df = pd.read_csv(r'C:\Users\prana\OneDrive\Desktop\IITHyderabad\codes\Statistics\Effects of food habits on daily life.csv')
 df=df.drop(['Timestamp'], axis=1)
 df=df[df['Physical activity']<=50]
 df=df[df['Sleep time']<=12]
@@ -145,9 +145,9 @@ for i in range(1,5):
 #CLT
 pairs = []
 mu=[]
-ks=range(2,40)
+ks=range(40,70)
 for k in ks:
-    for i in range(1,200):
+    for i in range(1,1000):
         sleeptime1=list(sleeptime)
         for p in range(len(sleeptime) // k):
             sum=0
@@ -163,8 +163,8 @@ for k in ks:
         freq.append(mu.count(unique_mu[i])/len(mu))
     fig1, ax1= plt.subplots()
     ax1.grid()
-    plt.xlim(right=13)
-    plt.ylim(top=0.2)
+    plt.xlim(left=6,right=8)
+    plt.ylim(top=0.05)
     ax1.scatter(unique_mu,freq,label=f'n={k}')
     ax1.legend()
     plt.savefig(f'CLT\{k:003}',dpi=100,facecolor='white')
