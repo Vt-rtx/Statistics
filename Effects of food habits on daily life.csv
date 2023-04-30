@@ -1,7 +1,6 @@
 Timestamp,FC,Physical activity,Sleep time,Eating outside,money on food per day,BLD,afternoon nap,money new
 2023/04/17 7:18:29 PM GMT+5:30,Non-vegetarian,4,6,5,600,Dinner,No,20
 2023/04/17 7:19:04 PM GMT+5:30,Non-vegetarian,5,6,5,300,Dinner,Yes,300
-2023/04/17 7:19:51 PM GMT+5:30,Non-vegetarian,168,24,28,6969,Breakfast,Yes,232.3
 2023/04/17 7:23:27 PM GMT+5:30,Vegetarian + egg,24,5,6,100,Breakfast,Yes,100
 2023/04/17 8:02:44 PM GMT+5:30,Vegetarian,7,6,2,50,Lunch,No,50
 2023/04/17 8:03:47 PM GMT+5:30,Vegetarian + egg,0,6,4,300,Dinner,Yes,300
@@ -18,7 +17,6 @@ Timestamp,FC,Physical activity,Sleep time,Eating outside,money on food per day,B
 2023/04/17 8:13:05 PM GMT+5:30,Non-vegetarian,2,9,3,100,Breakfast,Yes,100
 2023/04/17 8:13:11 PM GMT+5:30,Vegetarian,5,8,4,50,Breakfast,No,50
 2023/04/17 8:13:30 PM GMT+5:30,Non-vegetarian,0,7,10,30,Dinner,Yes,30
-2023/04/17 8:14:16 PM GMT+5:30,Non-vegetarian,0,0,1.00E+42,1.00E+55,Dinner,No,3.33333E+53
 2023/04/17 8:14:17 PM GMT+5:30,Non-vegetarian,2,8,1,20,Breakfast,No,20
 2023/04/17 8:14:23 PM GMT+5:30,Non-vegetarian,19,8,3,30,Breakfast,Yes,30
 2023/04/17 8:14:33 PM GMT+5:30,Non-vegetarian,2,6,30,20,Breakfast,No,20
@@ -55,7 +53,6 @@ Timestamp,FC,Physical activity,Sleep time,Eating outside,money on food per day,B
 2023/04/17 8:27:07 PM GMT+5:30,Non-vegetarian,4,8,5,50,Dinner,Yes,50
 2023/04/17 8:28:04 PM GMT+5:30,Vegetarian,9,7,10,100,Breakfast,No,100
 2023/04/17 8:28:54 PM GMT+5:30,Vegetarian,4,8,30,300,Lunch,Yes,300
-2023/04/17 8:29:02 PM GMT+5:30,Non-vegetarian,169,0,90,1.00E+14,Lunch,Yes,3.33333E+12
 2023/04/17 8:29:25 PM GMT+5:30,Non-vegetarian,5,7.5,8,30,Dinner,No,30
 2023/04/17 8:30:18 PM GMT+5:30,Non-vegetarian,0,8,9,1500,Dinner,No,50
 2023/04/17 8:30:27 PM GMT+5:30,Non-vegetarian,4.5,6.5,7,1300,Dinner,No,43.33333333
@@ -82,10 +79,8 @@ Timestamp,FC,Physical activity,Sleep time,Eating outside,money on food per day,B
 2023/04/17 8:43:13 PM GMT+5:30,Non-vegetarian,2,8,2,70,Breakfast,No,70
 2023/04/17 8:47:33 PM GMT+5:30,Vegetarian + egg,0,9,30,30,Breakfast,No,30
 2023/04/17 8:47:50 PM GMT+5:30,Non-vegetarian,6,7,2,50,Breakfast,No,50
-2023/04/17 8:48:36 PM GMT+5:30,Non-vegetarian,2,50,3,30,Breakfast,Yes,30
 2023/04/17 8:49:06 PM GMT+5:30,Non-vegetarian,2,6,25,200,Dinner,Yes,200
 2023/04/17 8:49:37 PM GMT+5:30,Non-vegetarian,0,8,30,40,Breakfast,Yes,40
-2023/04/17 8:49:59 PM GMT+5:30,Non-vegetarian,456,56,36,10000,Breakfast,No,333.3333333
 2023/04/17 8:50:01 PM GMT+5:30,Non-vegetarian,0,5,12,30,Breakfast,Yes,30
 2023/04/17 8:50:56 PM GMT+5:30,Non-vegetarian,10,7,1,100,Lunch,No,100
 2023/04/17 8:51:41 PM GMT+5:30,Vegetarian,1,8,3,50,Lunch,No,50
@@ -218,7 +213,6 @@ Timestamp,FC,Physical activity,Sleep time,Eating outside,money on food per day,B
 2023/04/18 2:14:44 PM GMT+5:30,Vegetarian + egg,5,7,8,100,Dinner,No,100
 2023/04/18 2:29:04 PM GMT+5:30,Non-vegetarian,0,8,10,100,Dinner,No,100
 2023/04/18 2:35:58 PM GMT+5:30,Vegetarian,0,7,2,60,Dinner,Yes,60
-2023/04/18 2:40:25 PM GMT+5:30,Non-vegetarian,168,12,50,200,Breakfast,Yes,200
 2023/04/18 5:04:04 PM GMT+5:30,Vegetarian,2,8,5,15,Breakfast,No,15
 2023/04/18 5:41:00 PM GMT+5:30,Non-vegetarian,8,9,10,80,Breakfast,Yes,80
 2023/04/18 6:56:11 PM GMT+5:30,Non-vegetarian,5,8,10,50,Dinner,Yes,50

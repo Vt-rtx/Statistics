@@ -16,7 +16,7 @@ def gif(path,name):
 def normal(x,mu,sigma):
     return 1/np.sqrt(2*np.pi*sigma**2)*np.exp(-((x-mu)/sigma)**2)
 
-df = pd.read_csv(r'C:\Users\prana\OneDrive\Desktop\IITHyderabad\codes\Statistics\Effects of food habits on daily life.csv')
+df = pd.read_csv(r'/home/rutvk/Desktop/Sem4/Stats/Statistics/Effects of food habits on daily life.csv')
 df=df.drop(['Timestamp'], axis=1)
 df=df[df['Physical activity']<=50]
 df=df[df['Sleep time']<=12]
@@ -180,3 +180,33 @@ gif('CLT_histogram','CLT_histogram')
 #     ax1.legend()
 #     plt.savefig(f'CLT\{k:003}',dpi=100,facecolor='white')
 # gif('CLT','CLT')
+
+veg=[]
+Nonveg=[]
+Egg=[]
+for i in range(data.shape[0]):
+    if(data[i][0]=='Non-vegetarian'):
+         Nonveg.append(data[i])
+    elif(data[i][0]=='Vegetarian'):
+         veg.append(data[i])
+    else:
+        veg.append(data[i])
+veg=np.array(veg) 
+Nonveg=np.array(Nonveg)   
+veg = list(veg[:,2])
+Nonveg = list(Nonveg[:,2])
+m = 10
+n = 20
+veg_var = []
+Nonveg_var = []
+points = []
+# Verify F distribution for variances of sleep time
+for i in range(100):
+    #randomly sample a tuple of length m from veg and n from Nonveg\
+    veg_sample = random.sample(veg, m)
+    Nonveg_sample = random.sample(Nonveg, n)
+    veg_var.append(np.var(veg_sample))
+    Nonveg_var.append(np.var(Nonveg_sample))
+    points.append(np.var(veg_sample)/np.var(Nonveg_sample))
+    
+
