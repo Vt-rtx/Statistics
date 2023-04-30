@@ -16,7 +16,7 @@ def gif(path,name):
 def normal(x,mu,sigma):
     return 1/np.sqrt(2*np.pi*sigma**2)*np.exp(-((x-mu)/sigma)**2)
 
-df = pd.read_csv(r'/home/rutvk/Desktop/Sem4/Stats/Statistics/Effects of food habits on daily life.csv')
+df = pd.read_csv(r'Effects of food habits on daily life.csv')
 df=df.drop(['Timestamp'], axis=1)
 df=df[df['Physical activity']<=50]
 df=df[df['Sleep time']<=12]
@@ -156,27 +156,38 @@ for k in ks:
             mu.append(sum/k)
     # print(len(pairs))
     mu.sort()
-#This part of code shows histogram rep for CLT
-    fig1, ax1= plt.subplots()
-    counts,edges,bars=ax1.hist(mu,bins=np.linspace(1,13,100),label=f'n={k}')
-    plt.xlim(right=4,left=8)
-    plt.grid()
-    plt.legend()
-    plt.xlim(left=6,right=8)
-    plt.ylim(top=1200)
+    #histogram
+    fig1,ax1=plt.subplots()
+    ax1.hist(mu,bins=100,label=f'n={k}')
+    ax1.grid()
+    ax1.legend()
+    plt.ylim(top=200)
+    plt.xlim(5,9)
     plt.savefig(f'CLT_histogram\{k:003}',dpi=100,facecolor='white')
 gif('CLT_histogram','CLT_histogram')
+#This part of code shows points rep for CLT
+#     fig1, ax1= plt.subplots()
+#     counts,edges,bars=ax1.hist(mu,bins=np.linspace(1,13,100),label=f'n={k}')
+#     plt.xlim(right=4,left=8)
+#     plt.grid()
+#     plt.legend()
+#     plt.xlim(left=6,right=8)
+#     plt.ylim(top=1200)
+#     plt.savefig(f'CLT_histogram\{k:003}',dpi=100,facecolor='white')
+# gif('CLT_histogram','CLT_histogram')
 #This part of code show points for CLT
-#     unique_mu=list(set(mu))
-#     # print(unique_mu)
-#     freq=[]
-#     for i in range(len(unique_mu)):
-#         freq.append(mu.count(unique_mu[i])/len(mu))
+#     z=np.linspace(np.min(mu)-1,np.max(mu)+1,100)
+#     z1=[0]*100
+#     for i in range(len(mu)):
+#         for j in range(99):
+#             if(z[j]<=mu[i] and z[j+1]>mu[i]):
+#                 z1[j]+=1
+#                 break
 #     fig1, ax1= plt.subplots()
 #     ax1.grid()
-#     plt.xlim(left=6,right=8)
-#     plt.ylim(top=0.05)
-#     ax1.scatter(unique_mu,freq,label=f'n={k}')
+#     plt.ylim(top=350)
+#     plt.xlim(5,9)
+#     ax1.scatter(z,z1,label=f'n={k}')
 #     ax1.legend()
 #     plt.savefig(f'CLT\{k:003}',dpi=100,facecolor='white')
 # gif('CLT','CLT')
@@ -197,16 +208,23 @@ veg = list(veg[:,2])
 Nonveg = list(Nonveg[:,2])
 m = 10
 n = 20
-veg_var = []
-Nonveg_var = []
 points = []
 # Verify F distribution for variances of sleep time
-for i in range(100):
+for i in range(10000):
     #randomly sample a tuple of length m from veg and n from Nonveg\
     veg_sample = random.sample(veg, m)
     Nonveg_sample = random.sample(Nonveg, n)
-    veg_var.append(np.var(veg_sample))
-    Nonveg_var.append(np.var(Nonveg_sample))
     points.append(np.var(veg_sample)/np.var(Nonveg_sample))
-    
-
+le=100
+z=np.linspace(0,np.max(points)+1,le)
+z1=[0]*le
+for i in range(len(points)):
+    for j in range(le-1):
+        if(z[j]<=points[i] and z[j+1]>points[i]):
+            z1[j]+=1
+            break
+fig1, ax1= plt.subplots()
+ax1.grid()
+ax1.scatter(z,z1)
+ax1.legend()
+plt.savefig(f'var\{k:003}',dpi=100,facecolor='white')
