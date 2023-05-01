@@ -148,23 +148,23 @@ for k in ks:
     pairs = []
     mu=[]   
     for i in range(1,1000):
-        sleeptime1=list(sleeptime)
+        moneyspent1=list(moneyspent)
         for p in range(len(sleeptime) // k):
             sum=0
             for j in range(k):
-                sum+=sleeptime1.pop(random.randrange(len(sleeptime1)))
+                sum+=moneyspent1.pop(random.randrange(len(moneyspent1)))
             mu.append(sum/k)
     # print(len(pairs))
     mu.sort()
     #histogram
-    fig1,ax1=plt.subplots()
-    ax1.hist(mu,bins=100,label=f'n={k}')
-    ax1.grid()
-    ax1.legend()
-    plt.ylim(top=200)
-    plt.xlim(5,9)
-    plt.savefig(f'CLT_histogram\{k:003}',dpi=100,facecolor='white')
-gif('CLT_histogram','CLT_histogram')
+#     fig1,ax1=plt.subplots()
+#     ax1.hist(mu,bins=100,label=f'n={k}')
+#     ax1.grid()
+#     ax1.legend()
+#     plt.ylim(top=200)
+#     plt.xlim(5,9)
+#     plt.savefig(f'CLT_histogram\{k:003}',dpi=100,facecolor='white')
+# gif('CLT_histogram','CLT_histogram')
 #This part of code shows points rep for CLT
 #     fig1, ax1= plt.subplots()
 #     counts,edges,bars=ax1.hist(mu,bins=np.linspace(1,13,100),label=f'n={k}')
@@ -175,7 +175,7 @@ gif('CLT_histogram','CLT_histogram')
 #     plt.ylim(top=1200)
 #     plt.savefig(f'CLT_histogram\{k:003}',dpi=100,facecolor='white')
 # gif('CLT_histogram','CLT_histogram')
-#This part of code show points for CLT
+# This part of code show points for CLT
 #     z=np.linspace(np.min(mu)-1,np.max(mu)+1,100)
 #     z1=[0]*100
 #     for i in range(len(mu)):
@@ -189,8 +189,8 @@ gif('CLT_histogram','CLT_histogram')
 #     plt.xlim(5,9)
 #     ax1.scatter(z,z1,label=f'n={k}')
 #     ax1.legend()
-#     plt.savefig(f'CLT\{k:003}',dpi=100,facecolor='white')
-# gif('CLT','CLT')
+#     plt.savefig(f'var\{k:003}',dpi=100,facecolor='white')
+# gif('var','var')
 
 veg=[]
 Nonveg=[]
@@ -215,16 +215,8 @@ for i in range(10000):
     veg_sample = random.sample(veg, m)
     Nonveg_sample = random.sample(Nonveg, n)
     points.append(np.var(veg_sample)/np.var(Nonveg_sample))
-le=100
-z=np.linspace(0,np.max(points)+1,le)
-z1=[0]*le
-for i in range(len(points)):
-    for j in range(le-1):
-        if(z[j]<=points[i] and z[j+1]>points[i]):
-            z1[j]+=1
-            break
 fig1, ax1= plt.subplots()
 ax1.grid()
-ax1.scatter(z,z1)
+ax1.hist(points,bins=100,label='$\\frac{S_{veg}^2}{S_{Nonveg}^2}$')
 ax1.legend()
 plt.savefig(f'var\{k:003}',dpi=100,facecolor='white')
